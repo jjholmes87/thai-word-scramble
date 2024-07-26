@@ -11,10 +11,12 @@ const Puzzle = ({ puzzle, onCorrect, onNextPuzzle }) => {
   const [startGame, setStartGame] = useState(true);
   const [resetGame, setResetGame] = useState(false);
   const [scrambled, setScrambled] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     setScrambled(scramble(puzzle));
     setShowAnswer(false);
+    setErrorMessage('');
   }, [puzzle]);
 
   const handleChange = (e) => {
@@ -29,7 +31,11 @@ const Puzzle = ({ puzzle, onCorrect, onNextPuzzle }) => {
       setResetGame(true);
       setStartGame(true);
     } else {
-      alert('ลองอีกครั้ง!');
+      setErrorMessage('คำตอบไม่ถูกต้อง! จะไปที่คำถามถัดไป.');
+      setTimeout(() => {
+        setErrorMessage('');
+        onNextPuzzle();
+      }, 2000); // Wait 2 seconds before moving to the next puzzle
     }
   };
 
@@ -50,6 +56,7 @@ const Puzzle = ({ puzzle, onCorrect, onNextPuzzle }) => {
       <Timer startGame={startGame} resetGame={resetGame} />
       <Hint hint={hint} revealHint={revealHint} />
       {showAnswer && <p>คำตอบที่ถูกต้องคือ: {puzzle}</p>}
+      {errorMessage && <p>{errorMessage}</p>}
     </div>
   );
 };
