@@ -1,0 +1,50 @@
+/* src/styles/App.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .app {
+    text-align: center;
+  }
+  
+  header {
+    background-color: #282c34;
+    padding: 20px;
+    color: white;
+  }
+  
+  .game {
+    margin-top: 20px;
+  }
+  
+  .puzzle {
+    margin: 20px;
+  }
+  
+  .timer, .hint {
+    margin-top: 10px;
+  }
+  
+  input {
+    padding: 10px;
+    margin: 10px;
+    width: 200px;
+  }
+  
+  button {
+    margin: 5px;
+    padding: 10px;
+  }
+  
+  p {
+    color: red;
+    font-weight: bold;
+  }
+  
